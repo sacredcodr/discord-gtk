@@ -261,6 +261,7 @@ mod tests {
             end)
             discord.on("send", function(t) if t == "" then return false end return t:upper() end)
             assert(io == nil and os == nil and package == nil and debug == nil)
+            assert(type(pairs) == "function" and type(tostring) == "function" and type(pcall) == "function")
             "#,
             ".a { color: red; }",
         );

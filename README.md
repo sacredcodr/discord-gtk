@@ -62,7 +62,7 @@ Keep the token out of issues, screenshots and commits. The `.gitignore` here exc
 
 ## Plugins
 
-A plugin is a folder in `~/.config/discord-gtk/plugins/` holding a `plugin.lua`, a `style.css`, or both. The folder `examples/plugins/demo` is a working starting point, and the comment at the top of `src/plugins.rs` documents the API. Lua plugins run in a sandbox with no access to files, processes or the network.
+A plugin is a folder in `~/.config/discord-gtk/plugins/` holding a `plugin.lua`, a `style.css`, or both. [docs/PLUGINS.md](docs/PLUGINS.md) documents the Lua API and the CSS class names, with examples, and `examples/plugins/demo` is a working starting point. Lua plugins run in a sandbox with no access to files, processes or the network.
 
 Settings has a Plugins page with native versions of some Vencord plugins: ClearURLs, Unindent, MoreCommands, FakeNitro, SilentMessageToggle, NoReplyMention, SilentTyping, AnonymiseFileNames, MessageLogger and CharacterCounter. Vencord's own plugins are JavaScript written for Discord's web app, so they can't run here. These are rewrites that do the same jobs.
 
