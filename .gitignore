@@ -1,0 +1,10 @@
+/target
+# Scratch material downloaded from Discord and its docs while reverse engineering.
+/.research
+# Run logs and screenshots can contain account names, ids and message text.
+*.log
+*.png
+# Never commit credentials, wherever they come from.
+token
+*.token
+.env

@@ -1,0 +1,168 @@
+/* Layout and colours follow Discord's web client. The colour names (@bg_chat
+   and friends) come from the active palette in themes/, generated from
+   Discord's own stylesheet. */
+@define-color window_bg_color @bg_chat;
+@define-color window_fg_color @text_default;
+@define-color view_bg_color @bg_chat;
+@define-color view_fg_color @text_default;
+@define-color headerbar_bg_color @bg_chat;
+@define-color headerbar_fg_color @text_strong;
+@define-color headerbar_border_color @border_subtle;
+@define-color headerbar_backdrop_color @bg_chat;
+@define-color sidebar_bg_color @bg_lower;
+@define-color sidebar_fg_color @channel_default;
+@define-color accent_bg_color @brand;
+@define-color accent_color @link;
+@define-color card_bg_color @bg_surface_higher;
+@define-color popover_bg_color @bg_lowest;
+@define-color popover_fg_color @text_default;
+@define-color dialog_bg_color @bg_chat;
+@define-color success_color @positive;
+@define-color destructive_bg_color @danger;
+@define-color error_color @danger;
+
+headerbar { box-shadow: inset 0 -1px @border_subtle; }
+
+.guild-strip { background: @bg_lowest; }
+.guild-strip row { background: transparent; padding: 4px 12px 4px 0; border-radius: 0; }
+
+.channel-pane { background: @bg_lower; }
+.channel-pane row { margin: 1px 8px; padding: 1px 4px; border-radius: 4px; color: @channel_default; }
+.channel-pane row:hover { background: @interactive_hover; color: @interactive_text_hover; }
+.channel-pane row:selected { background: @interactive_active; color: @text_strong; }
+
+.messages { background: transparent; }
+.messages row { padding: 0; background: transparent; }
+.messages row:hover { background: @interactive_hover; }
+.message-author { font-weight: 600; color: @text_strong; }
+.message-time { font-size: 0.75em; color: @text_muted; }
+.message-body { color: @text_default; }
+.message-media { border-radius: 8px; }
+.message-media picture { border-radius: 8px; }
+.embed {
+  background: @bg_lower;
+  border-left: 4px solid @brand;
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+.embed-title { font-weight: 600; color: @link; }
+.embed-description { color: @text_default; font-size: 0.9em; }
+
+.composer-box {
+  background: @bg_surface_higher;
+  border-radius: 8px;
+  margin: 0 16px 24px 16px;
+  padding: 0 4px;
+  min-height: 44px;
+}
+.composer-box button { color: @interactive_text; min-width: 36px; }
+.composer-box button:hover { color: @interactive_text_hover; background: transparent; }
+.composer {
+  background: transparent;
+  color: @text_default;
+  padding: 10px 4px;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.reply-preview { color: @text_muted; font-size: 0.85em; }
+.typing { font-size: 0.8em; color: @text_default; margin: 0 16px 4px 16px; }
+.context-bar {
+  background: @bg_lower;
+  color: @text_subtle;
+  border-radius: 8px 8px 0 0;
+  margin: 0 8px;
+  padding: 2px 12px;
+}
+.reaction {
+  background: @bg_surface_higher;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 1px 8px;
+  min-height: 0;
+  box-shadow: none;
+}
+.reaction:hover { border-color: @border_normal; }
+.reaction-me { background: @mention_bg; border-color: @brand; }
+
+.pill { background: @text_strong; min-width: 4px; min-height: 0; border-radius: 0 4px 4px 0; opacity: 0; transition: min-height 150ms ease, opacity 150ms ease; }
+.guild-strip row:hover .pill { min-height: 20px; opacity: 1; }
+.pill.unread { min-height: 8px; opacity: 1; }
+.guild-strip row:selected .pill { min-height: 40px; opacity: 1; }
+.badge {
+  background: @danger;
+  color: white;
+  font-size: 0.75em;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 0 5px;
+  min-width: 16px;
+}
+.category { font-size: 0.72em; font-weight: 700; color: @channel_default; letter-spacing: 0.04em; }
+.channel-pane row.unread { color: @text_strong; font-weight: 700; }
+.channel-pane row.muted { opacity: 0.45; }
+
+.voice-panel { background: @bg_lowest; padding: 8px 12px; border-top: 1px solid @border_subtle; }
+.voice-status { color: @text_subtle; font-weight: 600; }
+.voice-status.connected { color: @positive; }
+.voice-member { opacity: 0.9; }
+.voice-member.speaking avatar { box-shadow: 0 0 0 2px @positive; }
+
+.user-panel { background: @bg_lowest; padding: 0 8px; min-height: 52px; }
+.user-name { color: @text_strong; font-weight: 600; font-size: 0.9em; }
+.user-tag { color: @text_muted; font-size: 0.75em; }
+.panel-button { color: @interactive_text; min-width: 32px; min-height: 32px; padding: 0; }
+.panel-button:hover { background: @interactive_hover; color: @interactive_text_hover; }
+.panel-button:checked { color: @danger; background: transparent; }
+
+.server-header { min-height: 48px; padding: 0 16px; box-shadow: 0 1px 0 @border_subtle; }
+.server-name { color: @text_strong; font-weight: 600; font-size: 1em; }
+.channel-hash { color: @channel_default; font-size: 1.4em; font-weight: 300; }
+.channel-title { color: @text_strong; font-weight: 600; }
+.channel-topic { color: @text_muted; font-size: 0.9em; border-left: 1px solid @border_normal; padding-left: 8px; margin-left: 4px; }
+
+.member-list { background: @bg_lower; padding: 8px 0; }
+.member-list row { background: transparent; padding: 1px 8px; margin: 0 8px; border-radius: 4px; min-height: 42px; }
+.member-list row:hover { background: @interactive_hover; }
+.member-group { color: @channel_default; font-size: 0.75em; font-weight: 700; letter-spacing: 0.02em; margin: 16px 8px 2px 8px; }
+.member-name { color: @text_default; font-weight: 500; }
+.member-row.offline { opacity: 0.45; }
+.status-dot { color: @bg_lower; }
+
+.message-toolbar {
+  transform: translate(0, -10px);
+  background: @bg_lower;
+  border: 1px solid @border_subtle;
+  border-radius: 8px;
+  padding: 2px;
+  box-shadow: 0 2px 8px alpha(black, 0.3);
+}
+.message-toolbar button { color: @interactive_text; min-width: 28px; min-height: 28px; padding: 0; }
+.message-toolbar button:hover { color: @interactive_text_hover; background: @interactive_hover; }
+
+.rich-body, .rich-body text { background: transparent; color: @text_default; }
+
+.settings-heading { color: @text_muted; font-size: 0.75em; font-weight: 700; margin: 12px 8px 4px 8px; }
+
+.friends-tabs { padding: 8px 16px; min-height: 48px; }
+.friends-tabs togglebutton { color: @interactive_text; padding: 2px 10px; border-radius: 4px; }
+.friends-tabs togglebutton:checked { background: @interactive_active; color: @text_strong; }
+.friends-list { background: transparent; }
+.friends-list row { background: transparent; border-top: 1px solid @border_subtle; }
+.friends-list row:hover { background: @interactive_hover; }
+
+.profile-card { }
+.profile-card contents { background: @bg_lowest; border-radius: 8px; padding: 0; }
+.profile-avatar avatar { border: 6px solid @bg_lowest; }
+.profile-name { color: @text_strong; font-weight: 700; font-size: 1.3em; }
+.profile-tag { color: @text_muted; font-size: 0.9em; }
+.profile-activity { color: @text_default; }
+.profile-heading { color: @text_strong; font-size: 0.75em; font-weight: 700; }
+.role-chip { background: @bg_surface_higher; border-radius: 6px; padding: 2px 8px; font-size: 0.85em; }
+
+.staged-files { padding: 8px 16px; background: @bg_surface; border-radius: 8px 8px 0 0; margin: 0 16px; }
+.staged-file { background: @bg_lower; border-radius: 8px; padding: 8px; }
+
+.char-counter { color: @text_muted; font-size: 0.8em; margin: 0 6px; }
+.char-counter.over { color: @danger; }
