@@ -13,6 +13,17 @@ if [ "$1" = "--uninstall" ]; then
     exit 0
 fi
 
+command -v cargo >/dev/null || { echo "Rust is missing. Install it from https://rustup.rs and run this again."; exit 1; }
+missing=""
+for lib in gtk4 libadwaita-1 webkitgtk-6.0 opus; do
+    pkg-config --exists "$lib" 2>/dev/null || missing="$missing $lib"
+done
+if [ -n "$missing" ]; then
+    echo "Missing development libraries:$missing"
+    echo "See the Building section of the README for the package names on your distro."
+    exit 1
+fi
+
 cargo build --release
 install -Dm755 target/release/discord-gtk "$prefix/bin/discord-gtk"
 # Launchers do not always have ~/.local/bin on their PATH, so use the full path.

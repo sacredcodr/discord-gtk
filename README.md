@@ -19,18 +19,38 @@ Settings cover your account, sessions, connections, privacy, appearance (Discord
 
 This is a first version, so a lot is still missing: threads and forums, search, pins, stage channels, GIF and sticker pickers, and incoming call prompts.
 
-## Building
+## Installing
 
-You need a recent Rust toolchain plus development files for GTK 4 (4.16 or newer), libadwaita 1.6, WebKitGTK 6.0, libopus, cmake and PipeWire or ALSA. On Arch:
+You need Linux with GTK 4.16 or newer and libadwaita 1.6 or newer, which means a recent distro (Arch, Fedora 41+, Ubuntu 24.10+, Debian 13). There are no prebuilt binaries yet, so it builds from source. I have only tested it on Arch.
 
-```sh
-sudo pacman -S gtk4 libadwaita webkitgtk-6.0 opus cmake pipewire
-cargo run --release
-```
+1. Install Rust from [rustup.rs](https://rustup.rs) and the libraries below.
 
-To get it into your app launcher instead of starting it from a terminal, run `./install.sh`. It builds a release binary and installs it, with an icon and a desktop entry, under `~/.local`. `./install.sh --uninstall` removes it again and leaves your settings alone.
+   ```sh
+   # Arch
+   sudo pacman -S --needed base-devel git cmake gtk4 libadwaita webkitgtk-6.0 opus pipewire
 
-For debug output start it with `RUST_LOG=discord_gtk=debug`. Logs can contain usernames and ids, so read them before pasting them into an issue.
+   # Fedora
+   sudo dnf install git cmake gcc pkgconf-pkg-config gtk4-devel libadwaita-devel webkitgtk6.0-devel opus-devel pipewire-devel alsa-lib-devel
+
+   # Debian / Ubuntu
+   sudo apt install git cmake build-essential pkg-config libgtk-4-dev libadwaita-1-dev libwebkitgtk-6.0-dev libopus-dev libpipewire-0.3-dev libasound2-dev
+   ```
+
+   The package names for Fedora and Debian are my best guess. If `install.sh` reports a missing library, search your package manager for its `-dev` or `-devel` version.
+
+2. Get the code and install it.
+
+   ```sh
+   git clone https://github.com/sacredcodr/discord-gtk
+   cd discord-gtk
+   ./install.sh
+   ```
+
+   This builds a release binary (a few minutes the first time) and installs it under `~/.local` with an icon and a desktop entry, so discord-gtk appears in your app launcher. `./install.sh --uninstall` removes it again and leaves your settings alone. Use `PREFIX=/usr/local sudo -E ./install.sh` for a system-wide install.
+
+On Arch you can instead run `makepkg -si` inside the `packaging` folder to get a real package.
+
+To run it straight from the source tree without installing, use `cargo run --release`. For debug output set `RUST_LOG=discord_gtk=debug`. Logs can contain usernames and ids, so read them before pasting them into an issue.
 
 ## Logging in
 
