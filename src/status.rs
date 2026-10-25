@@ -37,8 +37,6 @@ pub fn dot(status: &str) -> gtk::DrawingArea {
     area.set_halign(gtk::Align::End);
     area.set_valign(gtk::Align::End);
     area.set_can_target(false);
-    area.set_margin_end(-3);
-    area.set_margin_bottom(-3);
     set(&area, status);
     area.set_draw_func(|area, cr, w, h| {
         let status = ["online", "idle", "dnd"]
