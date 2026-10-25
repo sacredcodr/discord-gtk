@@ -28,6 +28,8 @@ sudo pacman -S gtk4 libadwaita webkitgtk-6.0 opus cmake pipewire
 cargo run --release
 ```
 
+To get it into your app launcher instead of starting it from a terminal, run `./install.sh`. It builds a release binary and installs it, with an icon and a desktop entry, under `~/.local`. `./install.sh --uninstall` removes it again and leaves your settings alone.
+
 For debug output start it with `RUST_LOG=discord_gtk=debug`. Logs can contain usernames and ids, so read them before pasting them into an issue.
 
 ## Logging in

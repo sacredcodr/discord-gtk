@@ -1,0 +1,25 @@
+# Maintainer: you
+pkgname=discord-gtk-git
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Unofficial native GTK4 Discord client (breaks Discord ToS, use at your own risk)'
+arch=(x86_64)
+url='https://github.com/sacredcodr/discord-gtk'
+license=(MIT)
+depends=(gtk4 libadwaita webkitgtk-6.0 opus pipewire)
+makedepends=(cargo cmake git)
+source=("git+$url.git")
+sha256sums=(SKIP)
+
+build() {
+  cd discord-gtk
+  cargo build --release --locked
+}
+
+package() {
+  cd discord-gtk
+  install -Dm755 target/release/discord-gtk "$pkgdir/usr/bin/discord-gtk"
+  install -Dm644 packaging/dev.yugi.DiscordGtk.desktop "$pkgdir/usr/share/applications/dev.yugi.DiscordGtk.desktop"
+  install -Dm644 packaging/dev.yugi.DiscordGtk.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/dev.yugi.DiscordGtk.svg"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
